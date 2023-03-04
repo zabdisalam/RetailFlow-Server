@@ -1,38 +1,57 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
-const TaskSchema = mongoose.Schema(
+const TaskSchema = new Schema(
   {
-    //Demo
-    // accessToken: {
-    //   type: String,
-    //   min: 64,
-    //   unique: true,
-    //   required: true,
-    // },
-    // email: {
-    //   type: String,
-    //   required: true,
-    // },
-    // organization: {
-    //   type: String,
-    //   min: 6,
-    //   unique: true,
-    //   required: true,
-    // },
-    // password: {
-    //   type: String,
-    //   required: true,
-    //   min: 6,
-    //   max: 1050,
-    // },
-    // terminal: [
-    //   {
-    //     name: String,
-    //     number: String,
-    //     location: String,
-    //   },
-    // ],
+    name: {
+      type: String,
+      max: 64,
+      min: 5,
+      unique: true,
+      required: true,
+    },
+
+    description: {
+      type: String,
+      max: 10000,
+      min: 5,
+      unique: true,
+      required: true,
+    },
+
+    createDate: {
+      type: Date,
+      required: true,
+      default: Date.now
+    },
+
+    priority: {
+      type: String,
+      enum: ["High","Medium", "Low"],
+      required: true,
+    },
+
+    assignedTo: {
+      type: String,
+      max: 64,
+      required: true,
+    },
+
+    reportedBy: {
+      type: String,
+      max: 64,
+      required: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["ToDo","Inprogress", "InReview", "Completed"],
+      required: true,
+    },
+
+    Comments: [String],
+
   },
+  
   { timestamps: true }
 );
 
