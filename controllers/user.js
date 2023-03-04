@@ -10,5 +10,6 @@ export const getUserTickets = async(req, res, next)=> {
   } catch (error) {
     // Return an error response if the query fails
     res.status(500).json({ message: error.message="UserId not found" });
+
   }
 }

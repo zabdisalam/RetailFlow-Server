@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoute from "./routers/auth.js";
 import userRoute from "./routers/users.js";
+
 import mongoose from "mongoose";
 
 const app = express();
