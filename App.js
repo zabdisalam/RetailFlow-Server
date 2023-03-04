@@ -3,6 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoute from "./routers/auth.js";
+import userRoute from "./routers/users.js";
 import mongoose from "mongoose";
 
 const app = express();
@@ -29,8 +30,9 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
 
-const port = 8080;
+const port = 8000;
 
 app.listen(port, () => {
   connect();
