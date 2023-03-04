@@ -1,37 +1,23 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
-const TeamSchema = mongoose.Schema(
+const TeamSchema = new Schema(
   {
-    //Demo
-    // accessToken: {
-    //   type: String,
-    //   min: 64,
-    //   unique: true,
-    //   required: true,
-    // },
-    // email: {
-    //   type: String,
-    //   required: true,
-    // },
-    // organization: {
-    //   type: String,
-    //   min: 6,
-    //   unique: true,
-    //   required: true,
-    // },
-    // password: {
-    //   type: String,
-    //   required: true,
-    //   min: 6,
-    //   max: 1050,
-    // },
-    // terminal: [
-    //   {
-    //     name: String,
-    //     number: String,
-    //     location: String,
-    //   },
-    // ],
+      name: {
+          type: String,
+          required: true,
+          min: 4,
+          max: 64
+      },
+      members: [{
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+      }],
+      manager: {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+      }
   },
   { timestamps: true }
 );
