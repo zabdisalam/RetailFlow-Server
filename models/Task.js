@@ -31,14 +31,14 @@ const TaskSchema = new Schema(
     },
 
     assignedTo: {
-      type: String,
-      max: 64,
+      type: Schema.Types.ObjectId,
+      ref: 'User',
       required: true,
     },
 
     reportedBy: {
-      type: String,
-      max: 64,
+      type: Schema.Types.ObjectId,
+          ref: 'User',
       required: true,
     },
 
@@ -53,7 +53,7 @@ const TaskSchema = new Schema(
   },
   
   { timestamps: true }
-  
+
 );
 
 export default mongoose.model("Task", TaskSchema);
