@@ -1,5 +1,5 @@
 import Task from "../models/Task.js"
-
+import mongoose from 'mongoose'
 export const newTask = async (req, res, next) => {
     try {
         const taskNew = new Task({
@@ -18,6 +18,23 @@ export const newTask = async (req, res, next) => {
     } catch(err){
         throw(err)
     }
+}
+
+export const updateTicketStatus = async(req, res)=> {
+    const newStatus = req.body.status;
+    console.log("Update");
+    Task.findByIdAndUpdate(
+        {_id: mongoose.Types.ObjectId(req.params.taskId)},
+        {status: newStatus},
+        {new: true},
+        (err, task) => {
+            if(err){
+                console.log(err);
+                res.status(500).send("Error updating task status");
+            } else {
+                res.status(200).json(task)
+            }
+        })
 }
 
 //Retrieves a specific Task  
