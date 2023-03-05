@@ -7,7 +7,7 @@ export const getAllUserTasks = async(req, res, next)=> {
     const userId = req.params.userId;
   try {
     // Query the database to retrieve tasks associated with the user
-    const task = await Task.find({ assignedTo: mongoose.Types.ObjectId(userId) });
+    const task = await Task.find({ assignedTo: mongoose.Types.ObjectId(userId) }).populate("assignedTo reportedBy");
     console.log("New Task:");
     console.log(task);
 

@@ -8,16 +8,6 @@ const TeamSchema = new Schema(
           min: 4,
           max: 64
       },
-      members: [{
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-          required: true
-      }],
-      manager: {
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-          required: true
-      }
   },
   { timestamps: true }
 );

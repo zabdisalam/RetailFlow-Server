@@ -1,4 +1,4 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const TaskSchema = new Schema(
   {
@@ -21,53 +21,49 @@ const TaskSchema = new Schema(
     startDate: {
       type: Date,
       required: true,
-      default: Date.now
+      default: Date.now,
     },
 
     endDate: {
       type: Date,
       required: true,
-      default: Date.now() + 7*24*60*60*1000
+      default: Date.now() + 7 * 24 * 60 * 60 * 1000,
     },
 
     priority: {
       type: String,
-      enum: ["High","Medium", "Low"],
+      enum: ["High", "Medium", "Low"],
       required: true,
     },
 
     assignedTo: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
 
     reportedBy: {
       type: Schema.Types.ObjectId,
-          ref: 'User',
+      ref: "User",
       required: true,
     },
 
-      /**
-       *   teamId: {
-       *       type: Schema.Types.ObjectId,
-       *       ref: 'Team',
-       *       required: true
-       *     },
-       */
+    teamId: {
+      type: Schema.Types.ObjectId,
+      ref: "Team",
+      required: true,
+    },
 
     status: {
       type: String,
-      enum: ["ToDo","Inprogress", "InReview", "Completed"],
+      enum: ["ToDo", "Inprogress", "InReview", "Completed"],
       required: true,
     },
 
     comments: [String],
-
   },
-  
-  { timestamps: true }
 
+  { timestamps: true }
 );
 
 export default mongoose.model("Task", TaskSchema);
