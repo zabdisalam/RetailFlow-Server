@@ -19,3 +19,11 @@ export const newTask = async (req, res, next) => {
         throw(err)
     }
 }
+
+export const deleteTask = async (req, res) => {
+    console.log(req, res);
+    const taskID = req.params.taskID;
+    const deletedTask = await Task.findByIdAndDelete(taskID)
+    if(deletedTask) return res.status(200).send(`${deletedTask.name} has been deleted`)
+    else return res.status(404).send("Not Found")
+}
