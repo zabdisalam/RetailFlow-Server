@@ -3,7 +3,9 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoute from "./routers/auth.js";
-import userRoute from './routers/user.js'
+import userRoute from './routers/user.js';
+import taskRoute from './routers/task.js'
+
 import mongoose from "mongoose";
 
 const app = express();
@@ -30,9 +32,11 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute)
+app.use("/api/user", userRoute);
+app.use("/api/task", taskRoute)
 
-const port = 8080;
+
+const port = 8000;
 
 app.listen(port, () => {
   connect();
