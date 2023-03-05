@@ -1,13 +1,18 @@
+import User from "../models/User.js";
 import Task from '../models/Task.js'
-import User from '../models/User.js';
+import mongoose from "mongoose";
 
-export const getUserTickets = async(req, res, next)=> {
+//Retrieves all Tasks assigned to a user
+export const getAllUserTasks = async(req, res, next)=> {
     const userId = req.params.userId;
   try {
-    // Query the database to retrieve tickets associated with the user
-    const tickets = await Task.find({ assignedTo: userId }).exec();
-    // Return the tickets as a JSON response
-    res.json(tickets);
+    // Query the database to retrieve tasks associated with the user
+    const task = await Task.find({ assignedTo: mongoose.Types.ObjectId(userId) });
+    console.log("New Task:");
+    console.log(task);
+
+    // Return the task as a JSON response
+    res.status(200).json(task);
   } catch (error) {
     // Return an error response if the query fails
     res.status(500).json({ message: error.message="UserId not found" });
