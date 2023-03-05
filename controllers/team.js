@@ -2,6 +2,9 @@ import Team from "../models/Team.js";
 import Task from "../models/Task.js";
 import mongoose from "mongoose";
 
+export const getUsersUnderteam = async(req, res, next)=> {
+}
+
 export const newTeam = async (req, res) => {
   try {
     const teamNew = new Team({
