@@ -18,10 +18,16 @@ const TaskSchema = new Schema(
       required: true,
     },
 
-    createDate: {
+    startDate: {
       type: Date,
       required: true,
       default: Date.now
+    },
+
+    endDate: {
+      type: Date,
+      required: true,
+      default: Date.now() + 7*24*60*60*1000
     },
 
     priority: {
