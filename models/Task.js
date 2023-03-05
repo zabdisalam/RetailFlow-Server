@@ -48,7 +48,7 @@ const TaskSchema = new Schema(
       required: true,
     },
 
-    Comments: [String],
+    comments: [String],
 
   },
   
