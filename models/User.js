@@ -43,11 +43,12 @@ const UserSchema = new Schema(
 
     refreshToken: {
       type: String,
+      required: false
     }, 
 
     microsoftId: {
       type: String,
-      required: true
+      required: false
     }
     
   },
