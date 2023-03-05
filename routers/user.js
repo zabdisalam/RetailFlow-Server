@@ -1,7 +1,6 @@
-import { getAllUserTasks } from '../controllers/user.js';
 import express from "express";
 import {
-  register,
+  register, getAllUserTasks, getAllUsers
 } from "../controllers/user.js";
 
 
@@ -12,5 +11,6 @@ const router = express.Router();
 router.post("/", register);
 // The endpoint to retrieve all tasks associated with a user
 router.get('/:userId', getAllUserTasks);
+router.get('/', getAllUsers);
 
 export default router;

@@ -37,3 +37,9 @@ export const register = async(req, res) => {
       throw err;
     }
   }
+
+export const getAllUsers = async(req, res) => {
+    const user = await User.find()
+    console.log(user)
+    return res.status(200).send(user)
+}
