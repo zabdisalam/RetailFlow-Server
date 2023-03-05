@@ -5,7 +5,6 @@ import cors from "cors";
 import authRoute from "./routers/auth.js";
 import userRoute from './routers/user.js';
 import taskRoute from './routers/task.js'
-import userRoute from "./routers/users.js";
 
 import mongoose from "mongoose";
 
