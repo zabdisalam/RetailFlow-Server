@@ -48,13 +48,13 @@ const TaskSchema = new Schema(
       required: true,
     },
 
-      /**
-       *   teamId: {
-       *       type: Schema.Types.ObjectId,
-       *       ref: 'Team',
-       *       required: true
-       *     },
-       */
+  
+    teamId: {
+      type: Schema.Types.ObjectId,
+          ref: 'Team',
+      required: true
+    },
+      
 
     status: {
       type: String,

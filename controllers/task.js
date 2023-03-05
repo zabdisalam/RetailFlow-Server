@@ -9,6 +9,7 @@ export const newTask = async (req, res, next) => {
             priority: req.body.priority,
             assignedTo: req.body.assignedTo,
             reportedBy: req.body.reportedBy,
+            teamId: req.body.teamId,
             status: req.body.status,
             comments: req.body.comments
         });
