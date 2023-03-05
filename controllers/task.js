@@ -22,7 +22,7 @@ export const newTask = async (req, res, next) => {
 
 export const updateTicketStatus = async(req, res)=> {
     const newStatus = req.body.status;
-    console.log("Update");
+    console.log("Update task status");
     Task.findByIdAndUpdate(
         {_id: mongoose.Types.ObjectId(req.params.taskId)},
         {status: newStatus},
@@ -35,6 +35,23 @@ export const updateTicketStatus = async(req, res)=> {
                 res.status(200).json(task)
             }
         })
+}
+
+export const updateTicketAssignedTo = async(req, res) => {
+    const newAssignedTo = req.body.assignedTo;
+    console.log("Update Assignee");
+    Task.findByIdAndUpdate(
+        {_id: mongoose.Types.ObjectId(req.params.taskId)},
+        {assignedTo: mongoose.Types.ObjectId(newAssignedTo)},
+        {new: true},
+        (err, task) => {
+            if(err){
+                console.log(err);
+                res.status(500).send("Error updating task asignee");
+            } else {
+                res.status(200).json(task)
+            }
+        })   
 }
 
 //Retrieves a specific Task  
