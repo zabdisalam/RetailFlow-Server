@@ -29,6 +29,8 @@ export const register = async(req, res) => {
         teamId: req.body.teamId,
         email: req.body.email,
         isAdmin: req.body.isAdmin,
+        refreshToken: req.body.refreshToken,
+        microsoftId: req.body.microsoftId,
       });
       const user = await newUser.save();
       res.status(200).json(user._doc);
